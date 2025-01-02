@@ -1,0 +1,21 @@
+{
+    "name": "AWS SSM Response Decoder",
+    "description": "Content script to inject into AWS Console and change the compressed SSM response to readable format",
+    "version": "1.0",
+    "manifest_version": 3,
+    "author": "Murali Mulagalapati",
+    "content_scripts": [
+        {
+            "js": ["lib/pako.min.js", "scripts/content.js"],
+            "matches": [ "https://ap-southeast-1.console.aws.amazon.com/systems-manager/run-command/*"],
+            "run_at": "document_idle"
+        }
+    ],
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "icons": {
+        "128": "images/aws-ssm.png"
+    }
+}
